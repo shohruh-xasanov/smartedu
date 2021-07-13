@@ -1,10 +1,12 @@
 const express=require('express')
 const ejs=require('ejs')
 const path=require('path')
+const connectDB=require('./config/db')
 const PORT= 5000
 const bodyParser=require('body-parser')
 const layouts=require('express-ejs-layouts')
 const app=express()
+connectDB()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
