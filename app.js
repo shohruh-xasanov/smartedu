@@ -16,12 +16,9 @@ app.set('views', './views')
 
 app.use(express.static('public'))
 
-app.get('/', (req,res)=>{
-    res.render('page/index',{
-        layout:'./page/layout'
-    })
-})
-
+app.use('/', require('./routes/courseRouter'))
+app.use('/', require('./routes/blogRouter'))
+app.use('/', require('./routes/personRouter'))
 app.listen(PORT, ()=>{
     console.log("localhostda ishlayapdi")
 })
