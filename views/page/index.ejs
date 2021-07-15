@@ -9,17 +9,17 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<div id="home" class="first-section" style="background-image:url('images/slider-01.jpg');">
+				<div id="home" class="first-section" style="background-image:url('<%= data.edu[0].image%>');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-right">
 									<div class="big-tagline">
-										<h2><strong>SmartEDU </strong> education College</h2>
-										<p class="lead">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2><strong>SmartEDU </strong> <%= data.edu[0].name%></h2>
+										<p class="lead"><%= data.edu[0].title%></p>
+											<a href="/contact" class="hover-btn-new"><span>Bog'lanish</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="/single" class="hover-btn-new"><span>Ko'proq Malumot</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -28,17 +28,17 @@
 				</div><!-- end section -->
 			</div>
 			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('images/slider-02.jpg');">
+				<div id="home" class="first-section" style="background-image:url('<%= data.edu[1].image%>');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-left">
 									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight">SmartEDU <strong>education school</strong></h2>
-										<p class="lead" data-animation="animated fadeInLeft">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2 data-animation="animated zoomInRight">SmartEDU <strong> <%= data.edu[1].name%></strong></h2>
+										<p class="lead" data-animation="animated fadeInLeft"><%= data.edu[1].title%></p>
+											<a href="/contact" class="hover-btn-new"><span>Bog'lanish</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="/single" class="hover-btn-new"><span>Ko'proq Malumot</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -47,19 +47,17 @@
 				</div><!-- end section -->
 			</div>
 			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('images/slider-03.jpg');">
+				<div id="home" class="first-section" style="background-image:url('<%= data.edu[2].image%>');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-center">
 									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight"><strong>VPS Servers</strong> Company</h2>
-										<p class="lead" data-animation="animated fadeInLeft">1 IP included with each server 
-											Your Choice of any OS (CentOS, Windows, Debian, Fedora)
-											FREE Reboots</p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2 data-animation="animated zoomInRight"><strong>VPS Servers</strong> <%= data.edu[2].name%></h2>
+										<p class="lead" data-animation="animated fadeInLeft"><%= data.edu[2].title%></p>
+											<a href="/contact" class="hover-btn-new"><span>Bog'lanish</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="/single" class="hover-btn-new"><span>Ko'proq Malumot</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -85,43 +83,39 @@
         <div class="container">
             <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>About</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
+                    <h3>Bizning Jamoa haqida </h3>
+                    <p class="lead">Biz SmartEdu jamoasi ko'p yillardan buyon faoliyat olib borayotgan va ko'plab o'quvchilarni yetishtirib chiqqan Samarqandagi eng yahshi o'quv markazlaridan birimiz. Biz sizni yuqori marralarga chiqishingizga yordam berishga tayyormiz!!!</p>
                 </div>
             </div><!-- end title -->
         
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h4>2018 BEST SmartEDU education school</h4>
-                        <h2>Welcome to SmartEDU education school</h2>
-                        <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                        <h4>2021 BEST SmartEDU education school</h4>
+                        <h2><%= data.aboutlast[0].title%></h2>
+                        <p><%= data.aboutlast[0].description%></p>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
-
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
+                        <a href="#" class="hover-btn-new orange"><span>Ko'proq Malumot</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="post-media wow fadeIn">
-                        <img src="images/about_02.jpg" alt="" class="img-fluid img-rounded">
+                        <img src="<%= data.aboutlast[0].image%>" alt="" class="img-fluid img-rounded">
                     </div><!-- end media -->
                 </div><!-- end col -->
 			</div>
 			<div class="row align-items-center">
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="post-media wow fadeIn">
-                        <img src="images/about_03.jpg" alt="" class="img-fluid img-rounded">
+                        <img src="<%= data.aboutlast[1].image%>" alt="" class="img-fluid img-rounded">
                     </div><!-- end media -->
                 </div><!-- end col -->
 				
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h2>The standard Lorem Ipsum passage, used since the 1500s</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum.</p>
+                        <h2><%= data.aboutlast[1].title%></h2>
+						<p><%= data.aboutlast[1].description%></p>
 
                         <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
@@ -135,8 +129,8 @@
 		<div class="container">
 			 <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>Our history</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
+                    <h3>Jamoamiz Tarixi</h3>
+                    <p class="lead">Bizning SmartEDU jamoasi 2018-yilda tashkil topib shu vaqtgacha 500+ dan ko'p o'quvchilarga bilim berganmiz</p>
                 </div>
             </div><!-- end title -->
 			<div class="timeline">
@@ -144,58 +138,50 @@
 					<div class="timeline__items">
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-01">
-								<h2>2018</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[0].createdAt.getFullYear()%></h2>
+								<p><%= data.about[0].description%>.</p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-02">
-								<h2>2015</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[1].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[1].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-03">
-								<h2>2014</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[2].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[2].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-04">
-								<h2>2012</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[3].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[3].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-01">
-								<h2>2010</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[4].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[4].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-02">
-								<h2>2007</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[5].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[5].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-03">
-								<h2>2004</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[6].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[6].description%></p>
 							</div>
 						</div>
 						<div class="timeline__item">
 							<div class="timeline__content img-bg-04">
-								<h2>2002</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<h2><%= data.aboutlast[7].createdAt.getFullYear()%></h2>
+								<p><%= data.aboutlast[7].description%></p>
 							</div>
 						</div>
 					</div>
@@ -209,20 +195,20 @@
 			<div class="row text-left stat-wrap">
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-study"></i></span>
-					<p class="stat_count">12000</p>
-					<h3>Students</h3>
+					<p class="stat_count"><%= data.teacher * 15%></p>
+					<h3>O'quvchilar</h3>
 				</div><!-- end col -->
 
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-online"></i></span>
-					<p class="stat_count">240</p>
-					<h3>Courses</h3>
+					<p class="stat_count"><%= data.course%></p>
+					<h3>Kurslarimiz</h3>
 				</div><!-- end col -->
 
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-years"></i></span>
-					<p class="stat_count">55</p>
-					<h3>Years Completed</h3>
+					<p class="stat_count"><%= data.teacher *50 %></p>
+					<h3>Bitiruvchilarimiz</h3>
 				</div><!-- end col -->
 			</div><!-- end row -->
 		</div><!-- end container -->
@@ -231,3 +217,32 @@
     
         </div><!-- end container -->
     </div><!-- end section -->
+	<div id="testimonials" class="parallax section db parallax-off" style="background-image:url('images/parallax_04.jpg');">
+		<div class="container">
+			<div class="section-title text-center">
+				<h3>Iqtibos</h3>
+				<p>Bugun sen dam olayotganingda boshqalar mehnat qilyapdi. Bugun turib o'z ustingda ishlashni boshlamasang, bir kun kelib ular dam oladi sen esa ishlaysan</p>
+			</div><!-- end title -->
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="testi-carousel owl-carousel owl-theme">
+						<% for(item of data.phrase) {%>
+						<div class="testimonial clearfix">
+							<div class="testi-meta">
+								<img src="<%= item.teachersID.image%>" alt="" class="img-fluid">
+								<h4><%= item.teachersID.fullname%> </h4>
+							</div>
+							<div class="desc">
+								<h3><i class="fa fa-quote-left"></i> Uztozlardan:</h3>
+								<p class="lead"><%= item.title%></p>
+							</div>
+							<!-- end testi-meta -->
+						</div>
+						<!-- end testimonial -->
+						<% }%>
+					</div><!-- end carousel -->
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</div><!-- end section -->

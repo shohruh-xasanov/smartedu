@@ -95,7 +95,7 @@
      Bootstrap Touch Slider -->
      =============================================== */
 	 
-	$('#carouselExampleControls').bsTouchSlider();
+	// $('#carouselExampleControls').bsTouchSlider();
 	
     /* ==============================================
      Tooltip -->

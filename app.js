@@ -1,8 +1,8 @@
 const express=require('express')
 const ejs=require('ejs')
-const path=require('path')
 const connectDB=require('./config/db')
 const PORT= 5000
+const path= require('path')
 const bodyParser=require('body-parser')
 const layouts=require('express-ejs-layouts')
 const app=express()
@@ -15,6 +15,8 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 app.use(express.static('public'))
+app.use('/public/uploads', express.static('public/uploads'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/courseRouter'))
 app.use('/', require('./routes/blogRouter'))

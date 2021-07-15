@@ -13,7 +13,7 @@ const userSchema=new Schema({
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
     role:{
         type:String,

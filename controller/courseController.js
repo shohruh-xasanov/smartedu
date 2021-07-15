@@ -1,4 +1,5 @@
-const Course=require('../models/course')
+const Course= require('../models/course')
+const Phrase= require('../models/blog').Phrase
 
 exports.courseCreate= async (req,res,next)=>{
     try {
@@ -29,4 +30,16 @@ exports.elementDelete= async (req,res,next)=>{
         }
     await Course.findByIdAndDelete({_id:id})
     res.status(200).send("Kurs o'chirildi")
+}
+
+exports.getCourse = async (req,res, next)=>{
+    try {
+        const courses= await Course.find({category:req.params.category})
+        res.render('page/course', {
+            data:{courses},
+            layout:'./page/layout'
+        })
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
 }

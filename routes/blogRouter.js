@@ -1,17 +1,17 @@
 const router= require('express').Router()
-const {eduCreate,getBlog,blogCreate,getBlogs,getMainAll,aboutCreate,phraseCreate}=require('../controller/blogController')
+const {eduCreate,getBlog,getallsss,blogCreate,getBlogs,getMainAll,aboutCreate,phraseCreate}=require('../controller/blogController')
+const upload= require('../middleware/fileUploads')
 
 router.get('/',getMainAll)
-router.route('/edu',)
-    .post(eduCreate)
+router.route('/edu')
+    .post(upload.single('image'), eduCreate)
 
 router.route('/blog',)
     .post(blogCreate)
-    .get(getBlog)
+    .get(getBlogs)
 router.route('/about',)
-    .post(aboutCreate)
-
+    .post(upload.single('image'), aboutCreate)
 router.route('/phrase')
-    .post(phraseCreate)
-router.get('/blog/all',getBlogs)
+    .post(upload.single('image'), phraseCreate)
+router.get('/single',getBlog)
 module.exports=router

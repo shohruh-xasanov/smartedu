@@ -15,7 +15,7 @@ exports.userCreate=async (req,res,next)=>{
            if(email1){
                return res.status(500).json({msg:"bunaqa email oldindan ro'yhatda bor"})
             }
-        const user= new User({fullname,role, password:hash,direction,image:`/public/uploads/${req.file.filename}`,email})
+        const user= new User({fullname,role, password: hash, direction,image:`/public/uploads/${req.file.filename}`,email})
         await user.save()
         const accessToken=createAccessToken({id:user._id,roles:user.role})
     

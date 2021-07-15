@@ -6,13 +6,13 @@ const eduSchema=new Schema({
         type:String,
         required:true,
         minlength:5,
-        maxlength:100
+        maxlength:1000
     },
     title:{
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
     image:{
         type:String,
@@ -27,13 +27,13 @@ const blogSchema=new Schema({
         type:String,
         required:true,
         minlength:5,
-        maxlength:100
+        maxlength:1000
     },
     title:{
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
     image:{
         type:String,
@@ -47,17 +47,17 @@ const aboutSchema=new Schema({
         type:String,
         required:true,
         minlength:5,
-        maxlength:100
+        maxlength:1000
     },
     description:{
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
     image:{
         type:String,
-        required:false
+        required:true
     },
 },{
     timestamps:true
@@ -68,9 +68,9 @@ const phraseSchema= new Schema({
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
-    teacherID:{
+    teachersID:{
         type:mongoose.ObjectId,
         ref:'User',
         required:true
