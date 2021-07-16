@@ -6,7 +6,7 @@ exports.courseCreate= async (req,res,next)=>{
         const {category,name,description,image,duration,price,books,bonus,teachersID}=req.body;
         const course= await Course.findOne({name})
                 if(course) return res.status(400).json({msg: 'This course already exist.'})
-        const newCourse= new Course({category,name,description,image,duration,price,books,bonus,teachersID})
+        const newCourse= new Course({category,name,description,image:`/public/uploads/${req.file.filename}`,duration,price,books,bonus,teachersID})
         await newCourse.save()
         res.json(newCourse)
         
@@ -34,7 +34,7 @@ exports.elementDelete= async (req,res,next)=>{
 
 exports.getCourse = async (req,res, next)=>{
     try {
-        const courses= await Course.find({category:req.params.category})
+        const courses= await Course.find({category:req.params.category}).populate('teachersID')
         res.render('page/course', {
             data:{courses},
             layout:'./page/layout'
