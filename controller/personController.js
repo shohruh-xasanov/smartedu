@@ -81,7 +81,7 @@ exports.contactCreate= async (req,res,next)=>{
 
 exports.teachers= async (req,res)=>{
     try {
-    const phrase=await Phrase.find().populate('teacherID') 
+    const phrase=await Phrase.find().populate('teachersID',['fullname','image']) 
     const all= await User.find({role:'Teacher'})
       res.status(200).render('page/teachers',{
         data:{all, phrase},

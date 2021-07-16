@@ -51,7 +51,7 @@ exports.phraseCreate=async (req,res,next)=>{
 
 exports.contact= async (req,res)=>{
     try {
-        const phrase= await Phrase.find().populate('teachersID')
+        const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
         const contact= await Contact.find()
         res.status(200).render('page/contact',{
             data:{contact, phrase},
@@ -63,7 +63,7 @@ exports.contact= async (req,res)=>{
 }
 exports.getBlog= async (req,res)=>{
     try {
-        const phrase= await Phrase.find().populate('teachersID')
+        const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
         const blog= await Blog.find()
         .limit(6)
     res.status(200).render('page/blog-single',{
@@ -76,8 +76,8 @@ exports.getBlog= async (req,res)=>{
 }
 exports.getBlogs= async (req,res)=>{
     try {
-        const blog= await Blog.find().limit(2)
-        const phrase= await Phrase.find().populate('teachersID')
+        const blog= await Blog.find().limit(6)
+        const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
     res.status(200).render('page/blog',{
         data:{blog, phrase},
         layout:'./page/layout'
@@ -89,13 +89,13 @@ exports.getBlogs= async (req,res)=>{
 
 exports.getMainAll= async (req,res)=>{
     try {
-        const edu= await Edu.find()
+    const edu= await Edu.find()
     const aboutlast= await About.find()
     const about= await About.find().limit(8)
     const contact= await Contact.find().countDocuments()
     const course= await Course.find().countDocuments()
     const teacher= await User.find().countDocuments()
-    const phrase= await Phrase.find().populate('teachersID')
+    const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
     res.status(200).render('page/index',{
         data:{edu,aboutlast,about,contact,course,teacher,phrase},
         layout:'./page/layout'
@@ -103,5 +103,4 @@ exports.getMainAll= async (req,res)=>{
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }
-    
 }

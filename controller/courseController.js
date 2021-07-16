@@ -34,9 +34,10 @@ exports.elementDelete= async (req,res,next)=>{
 
 exports.getCourse = async (req,res, next)=>{
     try {
-        const courses= await Course.find({category:req.params.category}).populate('teachersID')
+        const phrase = await Phrase.find().populate('teachersID',['fullname','image']).sort({createdat:-1})
+        const courses= await Course.find({category:req.params.category})
         res.render('page/course', {
-            data:{courses},
+            data:{courses, phrase},
             layout:'./page/layout'
         })
     } catch (error) {

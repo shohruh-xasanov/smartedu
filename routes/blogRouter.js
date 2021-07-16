@@ -1,5 +1,5 @@
 const router= require('express').Router()
-const {eduCreate,getBlog,getallsss,blogCreate,getBlogs,getMainAll,aboutCreate,phraseCreate}=require('../controller/blogController')
+const {eduCreate,getBlog,blogCreate,getBlogs,getMainAll,aboutCreate,phraseCreate}=require('../controller/blogController')
 const upload= require('../middleware/fileUploads')
 
 router.get('/',getMainAll)
