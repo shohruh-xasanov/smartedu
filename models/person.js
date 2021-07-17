@@ -50,9 +50,8 @@ const contactSchema= new Schema({
         minlength:6,
         maxlength:50
     },
-    courseID:{
-        type:mongoose.ObjectId,
-        ref:'Course',
+    course:{
+        type:String,
         required:true
     },
     email:{
@@ -71,7 +70,7 @@ const contactSchema= new Schema({
         type:String,
         required:true,
         minlength:7,
-        maxlength:50
+        maxlength:500
     }
 },{
     timestamps:true

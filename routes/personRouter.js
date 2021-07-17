@@ -1,14 +1,24 @@
 const router= require('express').Router()
 const {userCreate, login,teachers, logout, contactCreate}=require('../controller/personController')
-const {contact}=require('../controller/blogController')
 const upload= require('../middleware/fileUploads')
+const Phrase = require('../models/blog').Phrase
+const Course = require('../models/course')
+
+
 router.route('/user',)
     .post(upload.single('image'),userCreate)
 router.route('/login',).post(login)
 router.route('/logout',).get(logout)
 router.route('/contact')
     .post(contactCreate)
-    .get(contact)
+    .get(async (req,res)=>{
+        const phrase = await Phrase.find().populate('teachersID',['fullname','image'])
+        const course = await Course.find()
+        res.render('page/contact',{
+            data:{ phrase, course},
+            layout:'./page/layout'
+        })
+    })
 router.get('/teachers', teachers)
 
 module.exports=router

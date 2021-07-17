@@ -49,25 +49,14 @@ exports.phraseCreate=async (req,res,next)=>{
 }
 
 
-exports.contact= async (req,res)=>{
-    try {
-        const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
-        const contact= await Contact.find()
-        res.status(200).render('page/contact',{
-            data:{contact, phrase},
-            layout:'./page/layout'
-        }) 
-    } catch (error) {
-        return res.status(500).json({msg: error.message})
-    }
-}
 exports.getBlog= async (req,res)=>{
     try {
         const phrase= await Phrase.find().populate('teachersID',['fullname','image'])
-        const blog= await Blog.find()
+        const blog= await Blog.find().sort({createdAt:-1})
         .limit(6)
+        const a = phrase[1].title.split(' ',2)
     res.status(200).render('page/blog-single',{
-        data:{phrase, blog},
+        data:{phrase,a, blog},
         layout:'./page/layout'
     })
     } catch (error) {

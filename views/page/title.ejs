@@ -1,0 +1,256 @@
+
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1><%= data.phrase[1].teachersID.fullname%><span class="m_1"><%= data.phrase[1].title%></span></h1>
+		</div>
+	</div>
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-9 blog-post-single">
+                    <div class="blog-item">
+                        <div class="image-blog">
+                            <img src="<%= data.result.image%>" alt="" class="img-fluid">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-date">
+                                <span class="day"><%= new Date().getDate()%></span>
+                                <span class="month"><%= new Date().toDateString().slice(3,7)%></span>
+                            </div>
+                            <div class="meta-info-blog">
+                                <span><i class="fa fa-calendar"></i> <a href="#"><%= data.result.createdAt.toDateString().slice(3)%></a> </span>
+                                <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
+                                <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+                            </div>
+                            <div class="blog-title">
+                                <h2><a href="#" title=""><%= data.result.name%></a></h2>
+                            </div>
+                            <div class="blog-desc">
+                                <p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
+                                <blockquote class="default">
+                                    Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque eget tempor tellus. Fusce lacinia tempor malesuada. Ut lacus sapien, placerat a ornare nec, elementum sit amet felis. Maecenas pretium lorem hendrerit eros sagittis fermentum.
+                                </blockquote>
+                                <p>Phasellus tristique commodo libero, eget dignissim turpis dignissim quis. Morbi sit amet laoreet nibh, gravida scelerisque felis. Phasellus ultrices pellentesque ligula et viverra. Integer elementum, risus et tempor ultricies, libero turpis pellentesque massa, at facilisis erat nunc hendrerit erat. Praesent rhoncus, augue nec condimentum porta, magna dui volutpat augue, vitae blandit magna quam in massa. Fusce a rhoncus diam. Proin nec lacinia nibh. Praesent sed nisi sed purus dictum laoreet.</p>
+                                <p>Duis at tortor augue. Ut et justo consequat, facilisis lectus facilisis, tincidunt massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel vestibulum urna. Fusce sed magna posuere, vehicula odio vitae, tempor arcu. Pellentesque eget felis sed eros maximus elementum ultrices a elit. Sed ac sodales enim.</p>
+                            </div>							
+                        </div>
+                    </div>
+                    
+                    <div class="blog-author">
+                        <div class="author-bio">
+                            <h3 class="author_name"><a href="#"><%= data.result.teachersID.fullname%></a></h3>
+                            <h5>SmartEDU <a href="#">O'qituvchisi</a></h5>
+                            <p class="author_det">
+                                <%= data.result.teachersID.direction%>
+                            </p>
+                            <p class="author_det">
+                                <%= data.result.teachersID.email%>
+                            </p>
+                        </div>
+                        <div class="author-desc">
+                            <img src="<%= data.result.teachersID.image%>" alt="about author">
+                            <ul class="author-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                </div><!-- end col -->
+                <div class="col-lg-3 col-12 right-single">
+                    <div class="widget-search">
+                        <div class="site-search-area">
+                            <form method="get" id="site-searchform" action="#">
+                                <div>
+                                    <input class="input-text form-control" name="search-k" id="search-k" placeholder="Search keywords..." type="text">
+                                    <input id="searchsubmit" value="Search" type="submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-categories">
+                        <h3 class="widget-title">Kurslarimiz</h3>
+                        <ul>
+                            <li><a href="#">Ieltsga tayyorlov</a></li>
+                            <li><a href="#">Biologiya fanidan Testga tayyotlov</a></li>
+                            <li><a href="#">Mental Arifmetika</a></li>
+                            <li><a href="#">Ingliz gramatikasi</a></li>
+                            <li><a href="#">Prizident Maktabiga Tayyarlov</a></li>
+                            <li><a href="#">SMM Menejment</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget-tags">
+                        <h3 class="widget-title">Search Tags</h3>
+                        <ul class="tags">
+                            <li><a href="#"><b>business</b></a></li>
+                            <li><a href="#"><b>jquery</b></a></li>
+                            <li><a href="#">corporate</a></li>
+                            <li><a href="#">portfolio</a></li>
+                            <li><a href="#">css3</a></li>
+                            <li><a href="#"><b>theme</b></a></li>
+                            <li><a href="#"><b>html5</b></a></li>
+                            <li><a href="#"><b>mysql</b></a></li>
+                            <li><a href="#">multipurpose</a></li>
+                            <li><a href="#">responsive</a></li>
+                            <li><a href="#">premium</a></li>
+                            <li><a href="#">javascript</a></li>
+                            <li><a href="#"><b>Best jQuery</b></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+    
+    <div id="plan" class="section lb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Kurs rejasini tanlang</h3>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="message-box">
+                        <ul class="nav nav-pills nav-stacked" id="myTabs">
+                            <li><a class="active" href="#tab1" data-toggle="pill">Oylik To'lov</a></li>
+                            <li><a href="#tab2" data-toggle="pill">Yillik To'lov</a></li>
+                        </ul>
+                    </div>
+                </div><!-- end col -->
+            </div>
+
+            <hr class="invis">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div class="tab-pane active fade show" id="tab1">
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price%> so'm</h2>
+                                            <h3>Bir Oylik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-space"></div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%></strong>
+                                            <p></p><strong><%= data.result.duration%> Soat oyiga</strong>
+                                            <p></p><strong><%= data.result.books%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%></strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price * 1.3%> so'm</h2>
+                                            <h3>Bir Oylik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-space"></div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%> Plus</strong>
+                                            <p></p><strong><%= data.result.duration *1.5%> Soat oyiga</strong>
+                                            <p></p><strong><%= Math.floor(data.result.books * 1.5)%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%> </strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price * 1.8%> so'm</h2>
+                                            <h3>Bir Oylik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-space"></div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%> Bootcamp</strong>
+                                            <p></p><strong><%= data.result.duration *2%> Soat oyiga</strong>
+                                            <p></p><strong><%= Math.floor(data.result.books * 2)%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%> + Bepul Yotoqxona</strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end row -->
+                        </div><!-- end pane -->
+
+                        <div class="tab-pane fade" id="tab2">
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price * 12%> so'm</h2>
+                                            <h3>Yillik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-space"></div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%></strong>
+                                            <p></p><strong><%= data.result.duration%> Soat oyiga</strong>
+                                            <p></p><strong><%= data.result.books%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%></strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price * (12*1.3)%> so'm</h2>
+                                            <h3>Yillik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-space"></div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%> Plus</strong>
+                                            <p></p><strong><%= data.result.duration *1.5%> Soat oyiga</strong>
+                                            <p></p><strong><%= Math.floor(data.result.books * 1.5)%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%> </strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="pricing-table pricing-table-highlighted">
+                                        <div class="pricing-table-header grd1">
+                                            <h2><%= data.result.price * 12*1.8%> so'm</h2>
+                                            <h3>Yillik to'lov</h3>
+                                        </div>
+                                        <div class="pricing-table-features">
+                                            <p></p><strong><%= data.result.name%> Bootcamp</strong>
+                                            <p></p><strong><%= data.result.duration *2%> Soat oyiga</strong>
+                                            <p></p><strong><%= Math.floor(data.result.books * 2)%> ta Kitob</strong> 
+                                            <p></p><strong><%= data.result.bonus%> + Bepul Yotoqxona</strong>
+                                            <p></p><strong>O'qituvchi : <%= data.result.teachersID.fullname%></strong>
+                                        </div>
+                                        <div class="pricing-table-sign-up">
+                                            <a href="/price" class="hover-btn-new orange"><span>Kursga Yozilish</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end row -->
+                        </div><!-- end pane -->
+                    </div><!-- end content -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->

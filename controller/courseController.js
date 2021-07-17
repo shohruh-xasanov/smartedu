@@ -32,6 +32,19 @@ exports.elementDelete= async (req,res,next)=>{
     res.status(200).send("Kurs o'chirildi")
 }
 
+exports.elementById= async (req,res,next)=>{
+    const {id}=req.params 
+    const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
+    const result=await Course.findById({_id: id}).populate('teachersID', '-password')
+        if(!result){
+            return res.status(404).json({msg: "bunaqa course yo'q"})
+        }
+    res.render('page/title',{
+        data:{result, phrase},
+        layout:'./page/layout'
+    })
+}
+
 exports.getCourse = async (req,res, next)=>{
     try {
         const phrase = await Phrase.find().populate('teachersID',['fullname','image']).sort({createdat:-1})

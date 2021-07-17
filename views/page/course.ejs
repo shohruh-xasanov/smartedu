@@ -2,7 +2,7 @@
 	<div class="all-title-box">
 		<div class="container text-center">
 			<h1><%= data.phrase[0].teachersID.fullname%><span class="m_1"><%= data.phrase[0].title%></span></h1>
-		</div><% console.log(data.phrase)%>
+		</div>
 	</div>
 	
     <div id="overviews" class="section wb">
@@ -19,14 +19,14 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="course-item">
 						<div  class="image-blog">
-							<img  src="<%= item.image%>" alt="" class="img-fluid">
+							<a href="/course/<%=`${item._id}`%>"><img  src="<%= item.image%>" alt="" class="img-fluid"></a>
 						</div>
 						<div class="course-br">
 							<div class="course-title">
-								<h2><a href="#" title=""><%= item.name%>></a></h2>
+								<h2><a href="/course/<%=`${item._id}`%>" title=""><%= item.name%>></a></h2>
 							</div>
 							<div class="course-desc">
-								<p><%= item.description%></p>
+								<a href="/course/<%=`${item._id}`%>"><p><%= item.description%></p></a>
 							</div>
 							<div class="course-rating">
 								4.5

@@ -70,10 +70,10 @@ exports.logout= async (req,res,next)=>{
 
 exports.contactCreate= async (req,res,next)=>{
     try {
-        const {fullname,courseID,email,phone,description}=req.body
-        const contact= new Contact({fullname,courseID,email,phone,description})
+        const {fullname,course,email,phone,description}=req.body
+        const contact= new Contact({fullname,course,email,phone,description})
         await contact.save()
-        res.status(200).send(contact)
+        res.status(200).redirect('/contact')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }

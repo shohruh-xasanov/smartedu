@@ -24,3 +24,9 @@ app.use('/', require('./routes/personRouter'))
 app.listen(PORT, ()=>{
     console.log("localhostda ishlayapdi")
 })
+
+app.get('/price', (req,res)=>{
+    res.render('page/pricing',{
+        layout:'./page/layout'
+    })
+})
