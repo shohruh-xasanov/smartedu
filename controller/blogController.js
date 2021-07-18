@@ -65,17 +65,22 @@ exports.getBlog= async (req,res)=>{
 }
 
 exports.elementById= async (req,res,next)=>{
-    const {id}=req.params 
-    const course = await Course.find().limit(6)
-    const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
-    const blog=await Blog.findById({_id: id}).populate('teachersID', '-password')
-        if(!blog){
-            return res.status(404).json({msg: "bunaqa blog yo'q"})
-        }
-    res.render('page/news',{
-        data:{blog,course, phrase},
-        layout:'./page/layout'
-    })
+    try {
+        const {id}=req.params 
+        const course = await Course.find().limit(6)
+        const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
+        const blog=await Blog.findById({_id: id}).populate('teachersID', '-password')
+            if(!blog){
+                return res.status(404).json({msg: "bunaqa blog yo'q"})
+            }
+        res.render('page/news',{
+            data:{blog,course, phrase},
+            layout:'./page/layout'
+        })
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+   
 }
 
 exports.getBlogs= async (req,res)=>{

@@ -34,17 +34,22 @@ exports.elementDelete= async (req,res,next)=>{
 }
 
 exports.elementById= async (req,res,next)=>{
-    const {id}=req.params 
-    const course = await Course.find().limit(6)
-    const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
-    const result=await Course.findById({_id: id}).populate('teachersID', '-password')
-        if(!result){
-            return res.status(404).json({msg: "bunaqa course yo'q"})
-        }
-    res.render('page/title',{
-        data:{result,course, phrase},
-        layout:'./page/layout'
-    })
+    try {
+        const {id}=req.params 
+        const course = await Course.find().limit(6)
+        const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
+        const result=await Course.findById({_id: id}).populate('teachersID', '-password')
+            if(!result){
+                return res.status(404).json({msg: "bunaqa course yo'q"})
+            }
+        res.render('page/title',{
+            data:{result,course, phrase},
+            layout:'./page/layout'
+        }) 
+    } catch (error) {
+        
+    }
+    
 }
 
 exports.getCourse = async (req,res, next)=>{
