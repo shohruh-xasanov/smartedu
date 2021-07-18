@@ -47,7 +47,7 @@ exports.elementById= async (req,res,next)=>{
             layout:'./page/layout'
         }) 
     } catch (error) {
-        
+        return res.status(500).json({msg: error.message})
     }
     
 }
