@@ -7,7 +7,7 @@ router.route('/edu')
     .post(upload.single('image'), eduCreate)
 
 router.route('/blog',)
-    .post(blogCreate)
+    .post(upload.single('image'),blogCreate)
     .get(getBlogs)
 router.route('/about',)
     .post(upload.single('image'), aboutCreate)

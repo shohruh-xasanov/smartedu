@@ -4,15 +4,10 @@
 			<h1><%= data.phrase[2].teachersID.fullname%><span class="m_1"><%= data.phrase[2].title%></span></h1>
 		</div>
 	</div>
-	
-    <div id="overviews" class="section wb">
-        <div class="container">
-            <div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    <p class="lead">Bugun sen dam olayotganingda boshqalar mehnat qilyapdi. Bugun turib o'z ustingda ishlashni boshlamasang, bir kun kelib ular dam oladi sen esa ishlaysan</p>
-                </div>
-            </div><!-- end title -->
-
+	<div>
+	    <div>
+            <hr class="invis">
+            <hr class="invis">
             <hr class="invis">
  
             <div class="row"> 
@@ -34,7 +29,7 @@
 							<p><%= item.title.split(' ', 20).join(' ').toString()%> ...</p>
 						</div>
 						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More<span></a>
+							<a class="hover-btn-new orange" href="/blog/<%= item._id%>"><span>Read More<span></a>
 						</div>
 					</div>
 					<hr class="invis">

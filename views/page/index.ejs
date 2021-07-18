@@ -9,14 +9,14 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<div id="home" class="first-section" style="background-image:url('<%= data.edu[0].image%>');">
+				<div id="home" class="first-section" style="background-image:url('<%= data.edu[2].image%>');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-right">
 									<div class="big-tagline">
-										<h2><strong>SmartEDU </strong> <%= data.edu[0].name%></h2>
-										<p class="lead"><%= data.edu[0].title%></p>
+										<h2><strong>SmartEDU </strong> <%= data.edu[2].name%></h2>
+										<p class="lead"><%= data.edu[2].title%></p>
 											<a href="/contact" class="hover-btn-new"><span>Bog'lanish</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="/blog" class="hover-btn-new"><span>Ko'proq Malumot</span></a>
@@ -47,14 +47,14 @@
 				</div><!-- end section -->
 			</div>
 			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('<%= data.edu[2].image%>');">
+				<div id="home" class="first-section" style="background-image:url('<%= data.edu[0].image%>');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-center">
 									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight"><strong>VPS Servers</strong> <%= data.edu[2].name%></h2>
-										<p class="lead" data-animation="animated fadeInLeft"><%= data.edu[2].title%></p>
+										<h2 data-animation="animated zoomInRight"><strong>SmartEdu</strong> <%= data.edu[0].name%></h2>
+										<p class="lead" data-animation="animated fadeInLeft"><%= data.edu[0].title%></p>
 											<a href="/contact" class="hover-btn-new"><span>Bog'lanish</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="/blog" class="hover-btn-new"><span>Ko'proq Malumot</span></a>
@@ -120,71 +120,6 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
-
-    <section class="section lb page-section">
-		<div class="container">
-			 <div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    <h3>Jamoamiz Tarixi</h3>
-                    <p class="lead">Bizning SmartEDU jamoasi 2018-yilda tashkil topib shu vaqtgacha 500+ dan ko'p o'quvchilarga bilim berganmiz</p>
-                </div>
-            </div><!-- end title -->
-			<div class="timeline">
-				<div class="timeline__wrap">
-					<div class="timeline__items">
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-01">
-								<h2><%= data.aboutlast[0].createdAt.getFullYear()%></h2>
-								<p><%= data.about[0].description%>.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-02">
-								<h2><%= data.aboutlast[1].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[1].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-03">
-								<h2><%= data.aboutlast[2].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[2].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-04">
-								<h2><%= data.aboutlast[3].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[3].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-01">
-								<h2><%= data.aboutlast[4].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[4].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-02">
-								<h2><%= data.aboutlast[5].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[5].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-03">
-								<h2><%= data.aboutlast[6].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[6].description%></p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-04">
-								<h2><%= data.aboutlast[7].createdAt.getFullYear()%></h2>
-								<p><%= data.aboutlast[7].description%></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<div class="section cl">
 		<div class="container">

@@ -30,3 +30,4 @@ app.get('/price', (req,res)=>{
         layout:'./page/layout'
     })
 })
+

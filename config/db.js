@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const dbUri='mongodb://localhost:27017/smartedu'
+const dbUri='mongodb+srv://Shohruh:349672@cluster0.pelmz.mongodb.net/smartedu?retryWrites=true&w=majority'
 const connectDB=async ()=>{
     const conn=await mongoose.connect(dbUri,{
         useFindAndModify:false,

@@ -33,7 +33,7 @@ const blogSchema=new Schema({
         type:String,
         required:true,
         minlength:6,
-        maxlength:1000
+        maxlength:10000
     },
     image:{
         type:String,

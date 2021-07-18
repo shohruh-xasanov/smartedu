@@ -11,14 +11,14 @@ const courseSchema= new Schema({
     name:{
         type:String,
         required:true,
-        minlength:6,
+        minlength:4,
         maxlength:100
     },
     description:{
         type:String,
         required:true,
         minlength:6,
-        maxlength:100
+        maxlength:1000
     },
     image:{
         type:String,
