@@ -1,5 +1,6 @@
 const Course= require('../models/course')
 const Phrase= require('../models/blog').Phrase
+const Blog= require('../models/blog').Blog
 
 exports.courseCreate= async (req,res,next)=>{
     try {
@@ -34,13 +35,14 @@ exports.elementDelete= async (req,res,next)=>{
 
 exports.elementById= async (req,res,next)=>{
     const {id}=req.params 
+    const course = await Course.find().limit(6)
     const phrase = await Phrase.find().populate('teachersID','fullname').sort({createdat:-1})
     const result=await Course.findById({_id: id}).populate('teachersID', '-password')
         if(!result){
             return res.status(404).json({msg: "bunaqa course yo'q"})
         }
     res.render('page/title',{
-        data:{result, phrase},
+        data:{result,course, phrase},
         layout:'./page/layout'
     })
 }

@@ -20,7 +20,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="blog-item">
 						<div class="image-blog">
-							<img src="<%= item.image%>" alt="" class="img-fluid">
+							<a href="/blog/<%= item._id%>"><img src="<%= item.image%>" alt="" class="img-fluid"></a>
 						</div>
 						<div class="meta-info-blog">
 							<span><i class="fa fa-calendar"></i> <a href="#"><%= item.createdAt.toDateString().slice(3)%></a> </span>
@@ -31,7 +31,7 @@
 							<h2><a href="#" title=""><%= item.name%></a></h2>
 						</div>
 						<div class="blog-desc">
-							<p><%= item.title%></p>
+							<p><%= item.title.split(' ', 20).join(' ').toString()%> ...</p>
 						</div>
 						<div class="blog-button">
 							<a class="hover-btn-new orange" href="#"><span>Read More<span></a>
