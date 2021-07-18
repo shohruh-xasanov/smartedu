@@ -1,7 +1,7 @@
 const express=require('express')
 const ejs=require('ejs')
 const connectDB=require('./config/db')
-const PORT= 5000
+const PORT= process.env.PORT||5000
 const path= require('path')
 const bodyParser=require('body-parser')
 const layouts=require('express-ejs-layouts')
