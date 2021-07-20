@@ -25,7 +25,7 @@ exports.userCreate=async (req,res,next)=>{
                 maxAge: 7*24*60*60*1000 //7d
             })
     
-            res.json({accessToken})
+            res.status(200).redirect('/user')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }
@@ -92,7 +92,44 @@ exports.teachers= async (req,res)=>{
     }
 }
 
+exports.allTeachers= async (req,res)=>{
+    try {
+    const teachers= await User.find({role:'Teacher'}).select({password:0})
+      res.status(200).render('admin/teachers/index',{layout:"./admin_layout", teachers})
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
 
+exports.teachersById = async (req,res,next)=>{
+    try {
+        const teachers = await User.findById({_id:req.params.id})
+    res.status(200).render('admin/teachers/update',{layout:'./admin_layout',teachers})
+    } catch (error) {
+        return res.json({msg:error.message})
+    }
+}
+exports.teacherDelete = async (req,res,next)=>{
+    await User.findByIdAndDelete({_id:req.params.id})
+    res.status(200).redirect('/user')
+}
+exports.userUpdate=async (req,res,next)=>{
+    try {
+        const {fullname,password,direction,email}=req.body;
+        const salt=await bcrypt.genSalt(saltRounds)
+        const hash=await bcrypt.hash(password, salt)
+        const user = await User.findByIdAndUpdate({_id:req.params.id},{fullname, password: hash, direction,image:`/public/uploads/${req.file.filename}`,email})
+        const accessToken=createAccessToken({id:user._id,roles:user.role})
+            res.cookie('ascces_token', accessToken, {
+                httpOnly:true,
+                path:'/refresh_token',
+                maxAge: 7*24*60*60*1000 //7d
+            })
+            res.redirect('/user')
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
 
 
 

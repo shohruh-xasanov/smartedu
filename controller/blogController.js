@@ -5,6 +5,7 @@ const Phrase= require('../models/blog').Phrase
 const User=require('../models/person').User
 const Contact=require('../models/person').Contact
 const Course=require('../models/course')
+
 exports.eduCreate=async (req,res,next)=>{
     try {
         const {name, title }=req.body;
@@ -20,7 +21,7 @@ exports.blogCreate= async (req,res,next)=>{
     const {name,title}= req.body
     const blog= new Blog({name,title, image:`/public/uploads/${req.file.filename}`})
     await blog.save()
-    res.status(200).send(blog)
+    res.status(200).redirect('/blog/all')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }
@@ -109,6 +110,28 @@ exports.getMainAll= async (req,res)=>{
         data:{edu,aboutlast,about,contact,course,teacher,phrase},
         layout:'./page/layout'
     })
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
+
+exports.blogById = async (req,res,next)=>{
+    const blog = await Blog.findById({_id:req.params.id})
+    res.status(200).render('admin/news/update',{layout:'./admin_layout',blog})
+}
+exports.allBlog = async (req,res,next)=>{
+    const blog = await Blog.find()
+    res.status(200).render('admin/news/index',{layout:'./admin_layout', blog})
+}
+exports.blogDelete = async (req,res,next)=>{
+    await Blog.findByIdAndDelete({_id:req.params.id})
+    res.status(200).redirect('/blog/all')
+}
+exports.blogUpdate = async (req,res,next)=>{
+    try {
+    const {name,title}= req.body
+    await Blog.findByIdAndUpdate({_id:req.params.id},{name,title, image:`/public/uploads/${req.file.filename}`})
+    res.status(200).redirect('/blog/all')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }

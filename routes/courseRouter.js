@@ -1,5 +1,5 @@
 const router=require('express').Router()
-const {courseCreate, elementById, getAll, getCourse, elementDelete}=require('../controller/courseController')
+const {courseCreate, elementById,courseUpdate,courseByID, getAll, getCourse, elementDelete}=require('../controller/courseController')
 const {getDate,  getDays} = require('../controller/search')
 const upload = require('../middleware/fileUploads')
 router.route('/course')
@@ -8,7 +8,9 @@ router.route('/course')
 router.route('/course/:id')
     .delete(elementDelete)
     .get(elementById)
+    .put(upload.single('image'),courseUpdate)
 router.get('/courses/:category', getCourse)
+router.get('/course/edit/:id',courseByID)
 router.get('/dates', getDate)
 
 module.exports=router

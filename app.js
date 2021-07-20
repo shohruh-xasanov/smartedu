@@ -3,11 +3,15 @@ const ejs=require('ejs')
 const connectDB=require('./config/db')
 const PORT= process.env.PORT||5000
 const path= require('path')
+const methodOverride = require('method-override')
 const bodyParser=require('body-parser')
 const layouts=require('express-ejs-layouts')
 const app=express()
 connectDB()
 
+app.use(methodOverride('_method',{
+    methods:['POST', 'GET']
+}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(layouts)
@@ -24,10 +28,15 @@ app.use('/', require('./routes/personRouter'))
 app.listen(PORT, ()=>{
     console.log("localhostda ishlayapdi")
 })
-
+app.get('/admin', (req,res)=>{
+    res.render('admin/dashboard',{layout:'./admin_layout'})
+})
 app.get('/price', (req,res)=>{
     res.render('page/pricing',{
         layout:'./page/layout'
     })
 })
 
+app.get('/api/category/all', (req,res)=>{
+    res.render('admin/category/index',{layout:'./admin_layout'})
+})
