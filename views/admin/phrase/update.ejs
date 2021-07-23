@@ -1,0 +1,29 @@
+
+<div class="pt-3 pb-3 pl-3">
+    <h4>Tahrirlash</h4>
+</div>
+
+            
+<div class="modal-body">
+    <form action="/phrase/<%=`${phrase._id}?_method=PUT`%>" method="POST" >
+      <div class="mb-3">
+        <label for="">Fraza </label>
+        <input type="text" name="title" class="form-control" value="<%= phrase.title%>"  />
+      </div>
+      <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
+        <label for="">O'qituvchini tanlang</label>
+        <select name="teachersID" class="form-control"  id="filterTheme">
+            <option style="font-weight: bold" value="" >Uztozni tanlang</option>
+            <% for (let item of teachers) {%>
+            <option value="<%= item._id %>"><%= item.fullname %></option>
+            <% } %>
+        </select>
+        </div>
+
+
+      <button type="submit" class="btn btn-primary">Saqlash</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>

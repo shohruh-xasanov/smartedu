@@ -7,37 +7,43 @@
           justify-content: space-between;
           align-items: center;
         ">
-        <h4 class="m-3" style="font-weight: 700">Izlab topilgan malumotlar</h4>
-       
+        <h4 class="m-3" style="font-weight: 700">Murjaatlar ro'yhati</h4>
       </div>
-   
-  
       <div class="card m-b-30">
         <div class="card-body">
           <table id="datatable" class="table table-bordered text-center"
             style="border-collapse: collapse; border-spacing: 0; width: 100%">
             <thead>
               <tr>
-                <th>Sarlavha</th>
-                <th>Tavsif</th>
-                <th style="width: 15%;">Yaratilgan sana</th>
+                <th>Ism Familya</th>
+                <th>Murojaat matni</th>
+                <th>Kurs</th>
+                <th>elektron pochta</th>
+                <th>telefon nomer</th>
+                <th>Yaratilgan sana</th>
               </tr>
             </thead>
-  
             <tbody>
-              <% for(let item of result) {%>
+              <% for(let item of contact) {%>
                 <tr>
                   <td>
-                    <%= item.name%>
+                    <%= item.fullname %>
                   </td>
                   <td>
-                    <%= item.description%>
+                    <%= item.description %>
                   </td>
-                  
+                  <td>
+                    <%= item.course %>
+                  </td>
+                  <td>
+                    <%= item.email %>
+                  </td>
+                  <td>
+                    <%= item.phone %>
+                  </td>
                   <td>
                     <%= item.createdAt.toLocaleString()%>
                   </td>
-                  
                 </tr>
                 <% } %>
             </tbody>
@@ -47,13 +53,3 @@
     </div>
     <!-- end col -->
   </div>
- 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-
-  <script>
-      axios.get('/api/search/admin').then(response => {
-          console.log(response.data)
-      })
-  </script>
- 

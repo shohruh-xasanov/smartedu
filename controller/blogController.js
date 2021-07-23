@@ -11,7 +11,7 @@ exports.eduCreate=async (req,res,next)=>{
         const {name, title }=req.body;
         const edu1= new Edu({name, title, image:`/public/uploads/${req.file.filename}`})
         await edu1.save()
-        res.status(200).send(edu1)
+        res.status(200).redirect('/edu')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }
@@ -32,7 +32,7 @@ exports.aboutCreate= async (req,res,next)=>{
         const {title, description}=req.body
         const about= new About({title, description, image:`/public/uploads/${req.file.filename}`})
         await about.save()
-        res.status(200).send(about)
+        res.status(200).redirect('/about')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }
@@ -43,7 +43,7 @@ exports.phraseCreate=async (req,res,next)=>{
         const {title,teachersID}=req.body;
         const phrase= new Phrase({title,teachersID})
         await phrase.save()
-        res.status(200).send(phrase)
+        res.status(200).redirect('/phrase')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }
@@ -132,6 +132,76 @@ exports.blogUpdate = async (req,res,next)=>{
     const {name,title}= req.body
     await Blog.findByIdAndUpdate({_id:req.params.id},{name,title, image:`/public/uploads/${req.file.filename}`})
     res.status(200).redirect('/blog/all')
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
+
+exports.phraseById = async (req,res,next)=>{
+    const teachers = await User.find().select({fullname:1})
+    const phrase = await Phrase.findById({_id:req.params.id})
+    res.status(200).render('admin/phrase/update',{layout:'./admin_layout',teachers, phrase})
+}
+
+exports.getAllPhrase = async (req,res,next)=>{
+    const teachers = await User.find().select({fullname:1})
+    const phrase = await Phrase.find().populate('teachersID',['fullname'])
+    res.status(200).render('admin/phrase/index',{layout:'./admin_layout', teachers,phrase})
+}
+exports.phraseDelete = async (req,res,next)=>{
+    await Phrase.findByIdAndDelete({_id:req.params.id})
+    res.status(200).redirect('/phrase')
+}
+exports.phraseUpdate = async (req,res,next)=>{
+    try {
+    const {title,teachersID}= req.body
+    await Phrase.findByIdAndUpdate({_id:req.params.id},{title,teachersID})
+    res.status(200).redirect('/phrase')
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
+
+exports.aboutById = async (req,res,next)=>{
+    const about = await About.findById({_id:req.params.id})
+    res.status(200).render('admin/about/update',{layout:'./admin_layout', about})
+}
+
+exports.getAllAbout = async (req,res,next)=>{
+    const about = await About.find()
+    res.status(200).render('admin/about/index',{layout:'./admin_layout', about})
+}
+exports.aboutDelete = async (req,res,next)=>{
+    await About.findByIdAndDelete({_id:req.params.id})
+    res.status(200).redirect('/about')
+}
+exports.aboutUpdate = async (req,res,next)=>{
+    try {
+    const {title,description}= req.body
+    await About.findByIdAndUpdate({_id:req.params.id},{title,description,image:`/public/uploads/${req.file.filename}`})
+    res.status(200).redirect('/about')
+    } catch (error) {
+        return res.status(500).json({msg: error.message})
+    }
+}
+
+exports.sliderById = async (req,res,next)=>{
+    const slider = await Edu.findById({_id:req.params.id})
+    res.status(200).render('admin/slider/update',{layout:'./admin_layout', slider})
+}
+exports.getAllSlider = async (req,res,next)=>{
+    const slider = await Edu.find()
+    res.status(200).render('admin/slider/index',{layout:'./admin_layout', slider})
+}
+exports.sliderDelete = async (req,res,next)=>{
+    await Edu.findByIdAndDelete({_id:req.params.id})
+    res.status(200).redirect('/edu')
+}
+exports.sliderUpdate = async (req,res,next)=>{
+    try {
+    const {name,title}= req.body
+    await Edu.findByIdAndUpdate({_id:req.params.id},{name,title,image:`/public/uploads/${req.file.filename}`})
+    res.status(200).redirect('/edu')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }

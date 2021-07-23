@@ -1,14 +1,19 @@
 const router= require('express').Router()
-const {userCreate, login,teachers,teachersById,teacherDelete, userUpdate,allTeachers, logout, contactCreate}=require('../controller/personController')
+const {userCreate, login,teachers,teachersById,teacherDelete,
+    getAllcontact, userUpdate,logins,allTeachers, refreshtoken,logout, contactCreate}=require('../controller/personController')
 const upload= require('../middleware/fileUploads')
 const Phrase = require('../models/blog').Phrase
 const Course = require('../models/course')
+const {isAuth,islogin} = require('../middleware/auth')
+const {admin,superAdmin} = require('../middleware/admin')
 
 router.route('/user',)
-    .post(upload.single('image'),userCreate)
-    .get(allTeachers)
+    .post(upload.single('image'),isAuth,admin,superAdmin,userCreate)
+    .get(isAuth,admin,allTeachers)
 router.route('/login',).post(login)
-router.route('/logout',).get(logout)
+    .get(islogin,logins)
+router.route('/logout',).get(isAuth,logout)
+router.get('/refresh_token',refreshtoken)
 router.route('/contact')
     .post(contactCreate)
     .get(async (req,res)=>{
@@ -20,9 +25,9 @@ router.route('/contact')
         })
     })
 router.route('/user/:id')
-    .get(teachersById)
-    .delete(teacherDelete)
-    .put(upload.single('image'),userUpdate)
-router.get('/teachers', teachers)
-
+    .get(isAuth,admin,superAdmin,teachersById)
+    .delete(isAuth,admin,superAdmin,teacherDelete)
+    .put(isAuth,admin,superAdmin,upload.single('image'),userUpdate)
+router.get('/teachers',teachers)
+router.get('/contact/all',isAuth,getAllcontact)
 module.exports=router

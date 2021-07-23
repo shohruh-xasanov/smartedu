@@ -18,14 +18,13 @@ exports.userCreate=async (req,res,next)=>{
         const user= new User({fullname,role, password: hash, direction,image:`/public/uploads/${req.file.filename}`,email})
         await user.save()
         const accessToken=createAccessToken({id:user._id,roles:user.role})
-    
-            res.cookie('ascces_token', accessToken, {
+        const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
+            res.cookie('refreshtoken', refreshtoken, {
                 httpOnly:true,
-                path:'/refresh_token',
                 maxAge: 7*24*60*60*1000 //7d
             })
     
-            res.status(200).redirect('/user')
+            res.status(200).redirect('/admin')
     } catch (error) {
         return res.status(500).json({msg: error.message})
     }
@@ -42,15 +41,14 @@ exports.login= async (req,res,next) =>{
      
              const isMatch= bcrypt.compare(req.body.password, user.password);
              if(!isMatch) return res.status(400).json({msg:'Incorrect password.'})
-     
-             const accessToken=createAccessToken({id:user._id,roles:result.role})
-             res.cookie('ascces_token', accessToken, {
-                 httpOnly:true,
-                 path:'/refresh_token',
+             const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
+             const accessToken=createAccessToken({id:user._id,roles:user.role})
+             res.cookie('refreshtoken', refreshtoken, {
+                 httpOnly:false,
                  maxAge: 7*24*60*60*1000 //7d
              })
      
-             res.json({accessToken})
+             res.redirect('/admin')
          }
      })
     
@@ -60,12 +58,35 @@ exports.login= async (req,res,next) =>{
 }
 exports.logout= async (req,res,next)=>{
     try {
-        res.clearCookie('ascces_token',{path:'/user/refresh_token'} )
-        return res.json({msg:'Logged out.'})
+        const rf_token=req.cookies.refreshtoken;
+        res.clearCookie('refreshtoken', rf_token,{path:'/refresh_token'})
+        res.redirect('/login')
         
     } catch (err) {
         res.status(500).json({msg:err.message})
     }
+}
+
+exports.refreshtoken = async (req,res,next)=>{
+    try {
+        const rf_token = req.cookies.refreshtoken;
+    if(!rf_token){
+        return res.status(400).json({msg:"Please login or regoster"})
+    }
+    jwt.verify(rf_token, secret.JWT_SECRET,(err,user)=>{
+        if(err) return res.status(400).json({msg:"Please login or regoster"})
+        const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
+        res.cookie('refreshtoken', refreshtoken, {
+            httpOnly:true,
+            path:'/refresh_token',
+            maxAge: 7*24*60*60*1000 //7d
+        })
+        res.send(refreshtoken)
+    })
+    } catch (error) {
+        res.status(500).json({msg:error.message})
+    }
+    
 }
 
 exports.contactCreate= async (req,res,next)=>{
@@ -131,13 +152,21 @@ exports.userUpdate=async (req,res,next)=>{
     }
 }
 
+exports.getAllcontact = async (req,res,next)=>{
+    const contact = await Contact.find()
+    res.status(200).render('admin/contact/index',{layout:'./admin_layout', contact})
+}
 
-
-
+exports.logins = async (req,res,next)=>{
+    res.render('admin/login/index',{layout:'./admin/login/layout'})
+}
 
 
 
 
 const createAccessToken=(user)=>{
-    return jwt.sign(user,secret.JWT_SECRET)
+    return jwt.sign(user,secret.JWT_SECRET, {expiresIn: '7d'})
+}
+const createRefreshToken=(user)=>{
+    return jwt.sign(user,secret.JWT_SECRET, {expiresIn: '1d'})
 }

@@ -7,8 +7,11 @@
           justify-content: space-between;
           align-items: center;
         ">
-        <h4 class="m-3" style="font-weight: 700">Ko'rib chiqilgan murojaatlar</h4>
-         
+        <h4 class="m-3" style="font-weight: 700">Frazalar uchun ro'yhat</h4>
+        <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
+          data-target=".bs-example-modal-lg">
+          Yaratish
+        </button>
       </div>
    
   
@@ -18,24 +21,24 @@
             style="border-collapse: collapse; border-spacing: 0; width: 100%">
             <thead>
               <tr>
-                <th>User</th>
-                <th>Order_id</th>
+                <th style="width: 40%">Fraza</th>
+                <th>Muallifi</th>
                 <th>Yaratilgan sana</th>
                 <th style="width: 15%">Sozlamalar</th>
               </tr>
             </thead>
   
             <tbody>
-              <% for(let item of result) {%>
+              <% for(item of phrase) {%>
                 <tr>
                   <td>
-                    <%= item.userID.fullName %>
+                    <%= item.title%>
                   </td>
                   <td>
-                    <%= item.order_id %>
+                    <%= item.teachersID.fullname%>
                   </td>
                   <td>
-                    <%= moment(item.createdAt).format("DD-MM-YYYY - hh:mm:ss") %>
+                    <%= item.createdAt.toLocaleString() %>
                   </td>
                   <td style="
                     display: flex;
@@ -43,15 +46,11 @@
                     justify-content: space-around;
                     align-items: center;
                   ">
-                    <a class="btn btn-success pl-2 pr-2" href="<%=`/api/order/${item._id}`%>">
-                      <i class="fas fa-eye"></i>
+                    
+                    <a class="btn btn-warning" href="<%=`/phrase/${item._id}`%>">
+                      <i class="fas fa-cog"></i>
                     </a>
-                    <form method="POST" action="<%=`/api/order/${item._id}?_method=PUT`%>" class="col-md-8" class="btn btn-warning">
-                      <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-cog"></i>
-                      </button>
-                    </form>
-                    <form method="POST" class="hidden-r" action="<%=`/api/order/${item._id}?_method=DELETE`%>">
+                    <form method="POST" class="hidden-r" action="<%=`/phrase/${item._id}?_method=DELETE`%>">
                       <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                       </button>
@@ -76,24 +75,25 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
         <div class="modal-body">
-          <form action="/api/faq" method="POST" >
-            
+          <form action="/phrase" method="POST" >
             <div class="mb-3">
-              <label for="">Sarlavha </label>
+              <label for="">Fraza </label>
               <input type="text" name="title" class="form-control"  />
             </div>
-            <div class="mb-3">
-              <label for="">Tavsif</label>
-              <textarea name="description" class="form-control" cols="20" rows="10"  ></textarea>
-            </div>
-            
+            <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
+              <label for="">O'qituvchini tanlang</label>
+              <select name="teachersID" class="form-control" value="" id="filterTheme">
+                  <option style="font-weight: bold">Tanlash ...</option>
+                  <% for (let item of teachers) {%>
+                  <option value="<%= item._id %>"><%= item.fullname %></option>
+                  <% } %>
+              </select>
+              </div>
             <button type="submit" class="btn btn-primary">Saqlash</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
- 
