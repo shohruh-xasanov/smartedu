@@ -9,7 +9,9 @@ const layouts=require('express-ejs-layouts')
 const app=express()
 const cookieParser = require('cookie-parser')
 connectDB()
+const compression = require('compression')
 
+app.use(compression())
 app.use(methodOverride('_method',{
     methods:['POST', 'GET']
 }))
