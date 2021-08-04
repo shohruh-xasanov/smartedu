@@ -13,7 +13,7 @@ exports.courseCreate= async (req,res,next)=>{
         res.status(200).redirect('/course')
         
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/course')
     }
 }
 exports.getAll=async (req,res,next)=>{
@@ -75,7 +75,7 @@ exports.courseUpdate= async (req,res,next)=>{
         res.status(200).redirect('/course')
         
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/course')
     }
 }
 

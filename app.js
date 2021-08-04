@@ -1,3 +1,4 @@
+
 const express=require('express')
 const ejs=require('ejs')
 const connectDB=require('./config/db')
@@ -10,6 +11,7 @@ const app=express()
 const cookieParser = require('cookie-parser')
 connectDB()
 const compression = require('compression')
+const { platform } = require('os')
 
 app.use(compression())
 app.use(methodOverride('_method',{
@@ -29,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/courseRouter'))
 app.use('/', require('./routes/blogRouter'))
 app.use('/', require('./routes/personRouter'))
+
 app.listen(PORT, ()=>{
     console.log("localhostda ishlayapdi")
 })

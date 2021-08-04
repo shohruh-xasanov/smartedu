@@ -8,14 +8,21 @@ const secret=require('../config/secret')
 
 exports.userCreate=async (req,res,next)=>{
     try {
+        if(!req.file.filename){
+            res.redirect('/admin')
+        }
         const {fullname,password,role,direction,email}=req.body;
         const salt=await bcrypt.genSalt(saltRounds)
         const hash=await bcrypt.hash(password, salt)
         const email1=await User.findOne({email});
            if(email1){
-               return res.status(500).json({msg:"bunaqa email oldindan ro'yhatda bor"})
+               return res.status(500).redirect('/admin')
             }
-        const user= new User({fullname,role, password: hash, direction,image:`/public/uploads/${req.file.filename}`,email})
+        const user= new User({fullname,role, password: hash, direction,image:`/public/uploads/${req.file.filename}`,email}, err=>{
+            if(err){
+                res.redirect('/admin')
+            }
+        })
         await user.save()
         const accessToken=createAccessToken({id:user._id,roles:user.role})
         const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
@@ -26,7 +33,7 @@ exports.userCreate=async (req,res,next)=>{
     
             res.status(200).redirect('/admin')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/admin')
     }
 }
 
@@ -35,12 +42,12 @@ exports.login= async (req,res,next) =>{
 
      await User.findOne({email: req.body.email} , (error,user)=>{
          if(error){
-             res.send(error)
+             res.redirect('/login')
          }else{
-             if(!user) return res.status(400).json({msg:'User does not exist.'})
+             if(!user) return res.status(400).redirect('/login')
      
              const isMatch= bcrypt.compare(req.body.password, user.password);
-             if(!isMatch) return res.status(400).json({msg:'Incorrect password.'})
+             if(!isMatch) return res.status(400).redirect('/login')
              const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
              const accessToken=createAccessToken({id:user._id,roles:user.role})
              res.cookie('refreshtoken', refreshtoken, {
@@ -53,28 +60,22 @@ exports.login= async (req,res,next) =>{
      })
     
  }catch (err){
-     res.status(500).json({msg:err.message})
+     res.status(500).redirect('/login')
  }
 }
 exports.logout= async (req,res,next)=>{
-    try {
         const rf_token=req.cookies.refreshtoken;
         res.clearCookie('refreshtoken', rf_token,{path:'/refresh_token'})
         res.redirect('/login')
-        
-    } catch (err) {
-        res.status(500).json({msg:err.message})
-    }
 }
 
 exports.refreshtoken = async (req,res,next)=>{
-    try {
         const rf_token = req.cookies.refreshtoken;
     if(!rf_token){
-        return res.status(400).json({msg:"Please login or regoster"})
+        return res.status(400).json({msg:"Please login or register"})
     }
     jwt.verify(rf_token, secret.JWT_SECRET,(err,user)=>{
-        if(err) return res.status(400).json({msg:"Please login or regoster"})
+        if(err) return res.status(400).json({msg:"Please login or register"})
         const refreshtoken=createRefreshToken({id:user._id,roles:user.role})
         res.cookie('refreshtoken', refreshtoken, {
             httpOnly:true,
@@ -83,52 +84,33 @@ exports.refreshtoken = async (req,res,next)=>{
         })
         res.send(refreshtoken)
     })
-    } catch (error) {
-        res.status(500).json({msg:error.message})
-    }
     
 }
 
 exports.contactCreate= async (req,res,next)=>{
-    try {
         const {fullname,course,email,phone,description}=req.body
         const contact= new Contact({fullname,course,email,phone,description})
         await contact.save()
         res.status(200).redirect('/contact')
-    } catch (error) {
-        return res.status(500).json({msg:error.message})
-    }
 }
 
 exports.teachers= async (req,res)=>{
-    try {
     const phrase=await Phrase.find().populate('teachersID',['fullname','image']) 
     const all= await User.find({role:'Teacher'})
       res.status(200).render('page/teachers',{
         data:{all, phrase},
         layout:"./page/layout"
     })
-    } catch (error) {
-        return res.status(500).json({msg: error.message})
-    }
 }
 
 exports.allTeachers= async (req,res)=>{
-    try {
     const teachers= await User.find({role:'Teacher'}).select({password:0})
       res.status(200).render('admin/teachers/index',{layout:"./admin_layout", teachers})
-    } catch (error) {
-        return res.status(500).json({msg: error.message})
-    }
 }
 
 exports.teachersById = async (req,res,next)=>{
-    try {
-        const teachers = await User.findById({_id:req.params.id})
+    const teachers = await User.findById({_id:req.params.id})
     res.status(200).render('admin/teachers/update',{layout:'./admin_layout',teachers})
-    } catch (error) {
-        return res.json({msg:error.message})
-    }
 }
 exports.teacherDelete = async (req,res,next)=>{
     await User.findByIdAndDelete({_id:req.params.id})
@@ -148,7 +130,7 @@ exports.userUpdate=async (req,res,next)=>{
             })
             res.redirect('/user')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/user')
     }
 }
 

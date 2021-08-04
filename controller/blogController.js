@@ -13,7 +13,7 @@ exports.eduCreate=async (req,res,next)=>{
         await edu1.save()
         res.status(200).redirect('/edu')
     } catch (error) {
-        return res.status(500).json({msg:error.message})
+        return res.status(500).redirect('/edu')
     }
 }
 exports.blogCreate= async (req,res,next)=>{
@@ -23,7 +23,7 @@ exports.blogCreate= async (req,res,next)=>{
     await blog.save()
     res.status(200).redirect('/blog/all')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/blog/all')
     }
 }
 
@@ -34,7 +34,7 @@ exports.aboutCreate= async (req,res,next)=>{
         await about.save()
         res.status(200).redirect('/about')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/about')
     }
 }
 
@@ -45,7 +45,7 @@ exports.phraseCreate=async (req,res,next)=>{
         await phrase.save()
         res.status(200).redirect('/phrase')
     } catch (error) {
-        return res.status(500).json({msg:error.message})
+        return res.status(500).redirect('/phrase')
     }
 }
 
@@ -133,7 +133,7 @@ exports.blogUpdate = async (req,res,next)=>{
     await Blog.findByIdAndUpdate({_id:req.params.id},{name,title, image:`/public/uploads/${req.file.filename}`})
     res.status(200).redirect('/blog/all')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/blog/all')
     }
 }
 
@@ -158,7 +158,7 @@ exports.phraseUpdate = async (req,res,next)=>{
     await Phrase.findByIdAndUpdate({_id:req.params.id},{title,teachersID})
     res.status(200).redirect('/phrase')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/phrase')
     }
 }
 
@@ -181,7 +181,7 @@ exports.aboutUpdate = async (req,res,next)=>{
     await About.findByIdAndUpdate({_id:req.params.id},{title,description,image:`/public/uploads/${req.file.filename}`})
     res.status(200).redirect('/about')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/about')
     }
 }
 
@@ -203,6 +203,6 @@ exports.sliderUpdate = async (req,res,next)=>{
     await Edu.findByIdAndUpdate({_id:req.params.id},{name,title,image:`/public/uploads/${req.file.filename}`})
     res.status(200).redirect('/edu')
     } catch (error) {
-        return res.status(500).json({msg: error.message})
+        return res.status(500).redirect('/edu')
     }
 }
